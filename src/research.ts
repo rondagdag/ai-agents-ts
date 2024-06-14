@@ -188,7 +188,7 @@ async function revise(state: {
   };
 }
 
-const agentState = {
+const agentState : any = {
   agentState: {
     value: (x: AgentState, y: AgentState) => y,
     default: () => ({
@@ -198,7 +198,7 @@ const agentState = {
 };
 
 // Define the function that determines whether to continue or not
-const shouldContinue = (state: { agentState: AgentState }) => {
+const shouldContinue : any = (state: { agentState: AgentState }) => {
   const result = state.agentState.critique === undefined ? "end" : "continue";
   return result;
 };
@@ -238,7 +238,7 @@ const workflow = new StateGraph({
 
   .addEdge("revise", "critique")
   .addEdge(START, "search");
-  
+
 const app = workflow.compile();
 
 export async function researchWithLangGraph(topic: string) {
